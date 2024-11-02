@@ -1,5 +1,10 @@
 import streamlit as st
 
+st.set_page_config(
+    page_title="배달 사이트",
+    page_icon="🛵"
+)
+
 pages = {
     "홈" : [
         st.Page("./pages/home1.py", title="로그인"),

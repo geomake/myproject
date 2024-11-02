@@ -29,8 +29,7 @@ if menu == '로그인':
         else:
             st.error("로그인 실패")
 
-
-
+ 
 elif menu =='회원가입':
     #데이터 베이스 연결
     conn = sqlite3.connect('db.db')
@@ -40,13 +39,12 @@ elif menu =='회원가입':
     id = st.text_input('아이디')
     pw = st.text_input('비번',type='password')
     pw_2 = st.text_input('비번확인',type='password')
-    email = st.text_input('이메일')
-    gender=st.radio('성별',['male','female'])
+    address = st.text_input('주소')
     btn2 = st.button('회원가입')
     if btn2:
         if pw == pw_2:
             sql=f"""
-insert into user(username,password,email,gender)values('{id}','{pw}','{email}','{gender}')"""
+insert into user(username,password,email,gender)values('{id}','{pw}','{address}')"""
             cursor.execute(sql)
             conn.commit()
             st.success('회원가입 성공!')
@@ -63,13 +61,11 @@ elif menu =='회원정보 수정':
         #비밀번호
         pw = st.text_input("비밀번호", type='password')    
         #이메일
-        email = st.text_input("이메일")
-        #성별(라디오버튼)
-        gender = st.radio("성별을 선택하세요", ['male','female'])
+        address = st.text_input("주소")
         #회원가입 버튼
         btn = st.button("수정")
         if btn:
-            sql=f"""UPDATE user SET password ="{pw}",email="{email}",gender="{gender}" WHERE username = "{id}"
+            sql=f"""UPDATE user SET password ="{pw}",address="{address}" WHERE username = "{id}"
             """
             cursor.execute(sql)
             conn.commit()

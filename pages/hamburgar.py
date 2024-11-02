@@ -20,6 +20,7 @@ if store == '롯데리아':
     if lott_bul:
         lott_bulm = st.radio('선택',["불고기 버거만"
                                       ,"불고기 세트",])
+        st.write("단품:4700원 / 세트:6900원")
         if lott_bulm =="불고기 버거만":
             p=p+4700
             st.write('선택됨!')
@@ -33,6 +34,7 @@ if store == '롯데리아':
     if lott_shi:
         lott_shim = st.radio('선택',["새우 버거만"
                                       ,"새우 세트",])
+        st.write("단품:4700원 / 세트:6900원")
         if lott_shim =="새우 버거만":
             p=p+4700
             st.write('선택됨!')
@@ -46,6 +48,7 @@ if store == '롯데리아':
     if lott_han:
         lott_hanm = st.radio('선택',["한우 버거만"
                                       ,"한우 세트",])
+        st.write("단품:8400원 / 세트:10200원")
         if lott_hanm =="한우 버거만":
             p=p+8400
             st.write('선택됨!')
@@ -63,8 +66,8 @@ if store == '롯데리아':
 
 if store == '맘스터치':
     st.title("맘스터치")
-    b = st.checkbox("b")
-    if b:
+    ham1 = st.checkbox("싸이버거")
+    if ham1:
         st.write("선택됨!")
 
 # btn = st.button("D 페이지로 이동")
