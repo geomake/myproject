@@ -8,7 +8,6 @@ st.set_page_config(
 pages = {
     "홈" : [
         st.Page("./pages/home1.py", title="로그인"),
-        st.Page("./pages/home2.py", title="회원 정보")
     ],
     "음식" : [
         st.Page("./pages/bunsik.py", title="분식"),
