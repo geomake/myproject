@@ -1,5 +1,8 @@
 import streamlit as st
+import sqlite3 
 
+conn = sqlite3.connect('db.db')
+cursor = conn.cursor()
 p=0
 store = st.sidebar.selectbox("store",['main','수미네 분식집','김밥천국'])
 
@@ -107,4 +110,9 @@ if store == '김밥천국':
     btn = st.button("주문하기")
     if btn:
         st.write(p,'원 입니다.')
+        st.session_state.money = st.session_state.money - p
+        sql=f"""UPDATE user SET money ="{st.session_state.money}" WHERE username = "{st.session_state.id}"
+            """
+        cursor.execute(sql)
+        conn.commit()
 

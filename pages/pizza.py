@@ -1,5 +1,8 @@
 import streamlit as st
+import sqlite3 
 
+conn = sqlite3.connect('db.db')
+cursor = conn.cursor()
 p=0
 store = st.sidebar.selectbox("store",['main','피자헛','도미노피자'])
 
@@ -16,7 +19,7 @@ if store == 'main':
     st.write("")
     st.write("")
     st.write("------------------------------")
-    
+
 if store == '피자헛':
     st.title("피자헛")
     supershirmp = st.checkbox("슈퍼슈프림")
@@ -44,6 +47,11 @@ if store == '피자헛':
     btn = st.button("주문하기")
     if btn:
         st.write(p,'원 입니다.')
+        st.session_state.money = st.session_state.money - p
+        sql=f"""UPDATE user SET money ="{st.session_state.money}" WHERE username = "{st.session_state.id}"
+            """
+        cursor.execute(sql)
+        conn.commit()
 
 
 if store == '도미노피자':
@@ -73,3 +81,8 @@ if store == '도미노피자':
     btn = st.button("주문하기")
     if btn:
         st.write(p,'원 입니다.')
+        st.session_state.money = st.session_state.money - p
+        sql=f"""UPDATE user SET money ="{st.session_state.money}" WHERE username = "{st.session_state.id}"
+            """
+        cursor.execute(sql)
+        conn.commit()

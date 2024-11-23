@@ -26,6 +26,8 @@ if menu == '로그인':
             db_pw = ''
         if db_pw == pw:
             st.sidebar.write(f"{id}님 환영합니다")
+            st.session_state.money = int(row[4]) 
+            st.session_state.id = id
         else:
             st.error("로그인 실패")
 
@@ -44,7 +46,7 @@ elif menu =='회원가입':
     if btn2:
         if pw == pw_2:
             sql=f"""
-insert into user(username,password,email,gender)values('{id}','{pw}','{address}')"""
+insert into user(username,password,address,money)values('{id}','{pw}','{address}','50000')"""
             cursor.execute(sql)
             conn.commit()
             st.success('회원가입 성공!')
